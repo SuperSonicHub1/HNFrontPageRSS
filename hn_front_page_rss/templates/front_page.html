@@ -1,0 +1,23 @@
+<main>
+	{% for post in posts %}
+		<article>
+			<h2>
+				<a {{ dict(href=post.link) | xmlattr}}>{{post.title}}</a>
+			</h2>
+			<p>Ranked #{{post.rank}} with {{post.points}} point{{ "" if points == 1 else "s" }}</p>
+			<p>
+				submitted by
+				<a {{ dict(href="https://news.ycombinator.com/user?id=" + post.author) | xmlattr}}>
+					{{post.author}}					
+				</a>
+				at
+				<time {{ dict(datetime=post.datetime.isoformat()) | xmlattr}}>
+					{{post.datetime.strftime("%c")}}
+				</time>
+			</p>
+			<p>
+				<a {{ dict(href="https://news.ycombinator.com/item?id=" + (post.id | string)) | xmlattr}}>View on Hacker News</a>
+			</p>
+		</article>
+	{% endfor %}
+</main>

@@ -1,0 +1,2 @@
+FLASK_APP=hn_front_page_rss
+FLASK_ENV=development
